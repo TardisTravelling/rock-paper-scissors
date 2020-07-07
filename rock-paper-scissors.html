@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>live feed template</title>
+    </head>
+    <body>
+        
+            <label for="playerSelection">Choose one: </label>
+            <select id="playerSelection">
+                <option value="">--Make a choice--</option>
+                <option value="rock">Rock</option>
+                <option value="paper">Paper</option>
+                <option value="scissors">Scissors</option>
+            </select>
+            
+            <p></p>
+
+        <script>
+        // Your JavaScript goes here!  
+
+            const select = document.querySelector('select');
+            const para = document.querySelector('p');
+
+            select.addEventListener('change', setplayerSelection);
+
+            function setplayerSelection() {
+                const player = select.value;
+
+                if (player === computer) {
+                    para.textContent = 'It is a tie because the computer chose ' + computer + ' and you also chose ' + player + '!';
+                } else if ((player === 'rock') && (computer === 'paper')) {
+                    para.textContent = 'The computer chose ' + computer + ' so the computer wins... paper beats rock';
+                } else if ((player === 'rock') && (computer === 'scissors')) {
+                    para.textContent = 'You win because the computer chose ' + computer + '... rock beats scissors';
+                }  else if ((player === 'paper') && (computer === 'rock')){
+                    para.textContent = 'You win because the computer chose ' + computer + '... paper beats rock';
+                } else if ((player === 'paper') && (computer === 'scissors')) {
+                    para.textContent = 'The computer chose ' + computer + ' so the computer wins... scissors beats paper';
+                } else if ((player === 'scissors') && (computer === 'rock')) {
+                    para.textContent = 'The computer chose ' + computer + ' so the computer wins... rock beats scissors';
+                } else if ((player === 'scissors') && (computer === 'paper')) {
+                    para.textContent = 'You win because the computer chose ' + computer + '... scissors beats paper';
+                } else {
+                    para.textContent = 'err';
+                }
+            }
+
+            function computerSelection(arr){
+                var res = arr[Math.floor(Math.random() * arr.length)];
+                return res;
+            }
+            computer = (computerSelection([ "rock", "paper", "scissors"])); 
+
+        </script>
+    </body>
+</html>
